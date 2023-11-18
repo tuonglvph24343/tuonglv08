@@ -18,7 +18,7 @@ class BrandContronller extends Controller
     }
     public function create()
     {
-        return view(self::PATH_UPLOAD . __FUNCTION__);
+        return view(self::PATH_VIEW . __FUNCTION__);
     }
     public function store()
     {
@@ -41,11 +41,11 @@ class BrandContronller extends Controller
     {
         return view(self::PATH_UPLOAD . __FUNCTION__, compact('brand'));
     }
-    public function update(Brand $brand)
+    public function update(Brand $brand): \Illuminate\Http\RedirectResponse
     {
         request()->validate([
 
-            
+
         ]);
         $data = \request()->except('img');
         if (\request()->hasFile('img')) {

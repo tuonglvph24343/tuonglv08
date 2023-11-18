@@ -25,6 +25,14 @@ use App\Models\Customer;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Route::view('master', function () {
+//     return view('welcome');
+// });
+Route::view('master','layout.master');
+
+
 Route::resource('products', ProductController::class);
 Route::resource('posts', PostController::class);
 Route::resource('categorys', CategoryController::class);
@@ -38,6 +46,9 @@ Route::resource('customers', CustomerController::class);
 Route ::prefix('admin')
 ->as('admin.')
 ->group(function() {
+    Route::get('dashboard',function(){
+        return view('admin.dashboard');
+    })->name('dashboard');
     Route::get('brands',[BrandContronller::class,'index'])->name('brands.index');
     Route::get('brands/create',[BrandContronller::class,'create'])->name('brands.create');
     Route::post('brands/store',[BrandContronller::class,'store'])->name('brands.store');
